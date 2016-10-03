@@ -1,0 +1,15 @@
+<div class="row">
+        <div ng-repeat="item in itemList" class="row">
+            <div class="col-sm-8">
+                <ul>
+                    <li><label>Name:</label> {{item.name}}</li>
+                    <li><label>Short Name:</label> {{item.short_name}}</li>
+                    <li><label>Description:</label>{{item.description}}</li>
+                </ul> 
+            </div>
+            <div class="col-sm-4">
+             <input type="button" value="Don't want this one" ng-click="removeItem({index:$index})"   class="btn btn-danger"/>
+            </div>
+        </div>
+        <div ng-if="errorMsg" class="alert alert-danger col-sm-6">{{errorMsg}}</div>
+</div>
