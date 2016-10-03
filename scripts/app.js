@@ -12,26 +12,30 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var ctrl=this;
   
+  // narrowItDown
   ctrl.narrowItDown=function(){
     ctrl.foundItems=null;
      ctrl.errorMsg=null;
      if(ctrl.searchTerm ==""){
        ctrl.errorMsg="Nothing Found";
      }else{
-      var foundItems=MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
-      foundItems.then(function(result){
-          console.log("Found Items:",result);
-          if(result.length<1){
-            ctrl.errorMsg="Nothing Found";
-          }else{
-            ctrl.foundItems=result;
-          }
-      });
+            var foundItems=MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+            foundItems.then(function(result){
+                if(result.length<1){
+                  ctrl.errorMsg="Nothing Found";
+                }else{
+                  ctrl.foundItems=result;
+                }
+          }).catch(function(){
+            console.log("something went wrong");
+          }); 
      }
   };
+
+  //Remove Items
   ctrl.removeFoundItem=function(index){
     ctrl.foundItems=MenuSearchService.removeFoundItem(index);
-  }
+  };
   
 }
 
