@@ -5,7 +5,6 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
-.directive('itemsLoaderIndicator',ItemLoaderIndicator)
 .directive('foundItems',FoundItemsDerective);
 
 // Controller 
@@ -37,17 +36,9 @@ function NarrowItDownController(MenuSearchService) {
 }
 
 //directive
-
-function ItemLoaderIndicator(){
-  var ddo={
-    templateUrl:'../loader/itemsloaderindicator.template.html'
-  };
-  return ddo;
-
-}
 function FoundItemsDerective(){
   var ddo={
-     templateUrl:'../template/itemfound.template.html',
+     templateUrl:'template/itemfound.template.html',
      scope:{
        itemList:'<',
        errorMsg:'@',
